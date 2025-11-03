@@ -100,28 +100,6 @@ color:var(--main-text-color);
     0 0 40px #0f0;
 }
 
-.glow-animate {
-    box-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-    text-shadow: 0 0 5px #fff, 0 0 10px #0f0;
-    animation: glowPulse 1.5s infinite ease-in-out;  
-    transform: scale(1.05);
-
-  }
-
-  @keyframes glowPulse {
-    0% {
-      box-shadow: 0 0 5px #0f0;
-      text-shadow: 0 0 2px #fff, 0 0 5px #0f0;
-    }
-    50% {
-      box-shadow: 0 0 20px #0f0;
-      text-shadow: 0 0 10px #fff, 0 0 20px #0f0;
-    }
-    100% {
-      box-shadow: 0 0 5px #0f0;
-      text-shadow: 0 0 2px #fff, 0 0 5px #0f0;
-    }
-  }
 
 .start {    
     position: relative;
@@ -132,8 +110,7 @@ color:var(--main-text-color);
     align-items: center;
     text-align: center;
     top: 30%;
-    left: 25%;
-}
+    left: 25%;}
 
 .start__logos {
     position: absolute;

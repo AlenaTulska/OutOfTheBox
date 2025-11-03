@@ -57,10 +57,7 @@ btns.forEach(btn => {
 
 const container = document.getElementById('star-bg');
 
-// === Сцена ===
 const scene = new THREE.Scene();
-
-// === Камера ===
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -69,12 +66,10 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 5;
 
-// === Рендерер ===
-const renderer = new THREE.WebGLRenderer({ alpha: true }); // 🔹 прозорий фон
+const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
 
-// === Зірки ===
 const starGeometry = new THREE.BufferGeometry();
 const starCount = 1500;
 const positions = new Float32Array(starCount * 3);
@@ -94,8 +89,6 @@ const starMaterial = new THREE.PointsMaterial({
 
 const stars = new THREE.Points(starGeometry, starMaterial);
 scene.add(stars);
-
-// === Анімація ===
 function animate() {
   requestAnimationFrame(animate);
   stars.rotation.y += 0.0008;
@@ -104,7 +97,6 @@ function animate() {
 
 animate();
 
-// === Адаптація під зміну розміру ===
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
