@@ -1,0 +1,262 @@
+@import url(/css/reset.css);
+
+:root {
+    --main-text-color: #fff;
+    --main-background-color: #1E1E1E;
+    --shadow-width-1: .1875rem;
+    --shadow-width-2: .3125rem;
+    --shadow-width-3: .25475rem;
+    --shadow-width-4: .4245rem;
+    --shadow-width-5: 1.25rem;
+    --shadow-color-1: rgba(153, 255, 136, .7);
+    --shadow-color-2: #99ff88;
+    --shadow-color-3: #106f00;
+    --shadow-color-4: rgba(153, 255, 136, .5);
+    --shadow-color-5: rgba(16, 111, 0, .8);
+    --shadow-color-6: #1E1E1E;
+}
+#star-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; 
+}
+
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transition: transform 1s ease-in-out; 
+}
+
+
+.loaderScreen {
+  max-width: 100%;
+  min-height: 100vh;
+  background-image: url(/images/loader-bg.webp);
+  background-repeat: no-repeat; 
+  background-size: cover;       
+  background-position: center;
+  transform: translateY(0);
+}
+
+.mainScreen {
+  width: 100%;
+  height: 100%;
+  background-image: url(/images/Designer.png);
+  background-size: cover;
+  z-index: -1;
+  overflow: hidden;
+  transform: translateY(100%);
+}
+
+.button {
+    max-width: 180px;
+    padding: 5px 5px;
+    clip-path: polygon(10px 0, calc(100% - 10px) 0,
+        100% 10px, 100% calc(100% - 10px),
+        calc(100% - 10px) 100%, 10px 100%,
+        0 calc(100% - 10px), 0 10px);
+    border: 2px solid #7e7e7e;
+     transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.button-inner {
+max-width: 160px;
+padding: 5px 5px;
+border: 2px solid #fff;
+color:var(--main-text-color);
+}
+
+.accessible {
+    position: absolute;
+    top: 2.25rem;
+    right: 2.25rem;
+}
+
+.enter {
+    position: absolute;
+    top: 75%;
+    right: 45%;
+    border:#08992c 1px solid;
+    background-color:rgba(19, 110, 3, 0.4);
+    box-shadow: 0 0 10px rgba(16, 111, 0, 0.6);
+    color:#08992c;
+}
+
+.enter .button-inner {
+    padding: 3px 10px;
+    border:#08992c 1px solid; 
+    color: #fefefe;
+   text-shadow:
+    0 0 5px #fff,    
+    0 0 10px #0f0,   
+    0 0 40px #0f0;
+}
+
+
+.start {    
+    position: relative;
+    height: 27.5rem;
+    width: 44.0625rem;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    top: 30%;
+    left: 25%;}
+
+.start__logos {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    max-width: 700px;
+    min-height: 40px;
+    animation: logosCloser 2s ease forwards;
+
+} 
+
+  @keyframes logosCloser {
+    from {
+      gap: 30px;
+    }
+    to {
+      gap: 20px;
+    }
+  }
+
+.icon {
+    max-width: 70px;
+    height: 40px;
+}
+
+.start-text {
+  position: absolute;
+  top: 60%;
+  background-color:rgba(19, 110, 3, 0.4);            
+  max-width: 400px;
+  padding: 0 20px 0 20px;
+  color: var(--main-text-color);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(16, 111, 0, 0.6);
+}
+
+.start-title {
+    max-width: 300px;
+    color:var(--main-text-color);
+    text-shadow: 0 0 10px #08992c, 0 0 20px #08992c;
+    position: absolute;
+    top: 15%;
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.mainScreen .start-title {
+    max-width: 700px;
+    font-size: 84px;
+}
+
+.the {
+    position: absolute;
+    top: 6%;
+    left: 14%;
+    font-size: 18px;
+    animation-delay: 0.2s;
+
+}
+.of {
+    position: absolute;
+    bottom: 54%;
+    right: 18%;
+    font-size: 18px;
+    animation-delay: 0.2s;
+}
+
+
+.start-title span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInCenter 1s ease forwards;
+}
+
+.start-title span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.start-title span:nth-of-type(4) {
+    animation-delay: 0.2s;
+}
+.start-title span:nth-of-type(5) {
+    animation-delay: 0.2s;
+}
+.start-title span:nth-of-type(6) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInCenter {
+to {
+    opacity: 1;
+    }
+}
+
+.loader-container {
+ position: absolute;
+ top:40%;
+  width: 300px;  
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  width: 0%;
+  height: 3px;
+  background-color: #08992c;
+  box-shadow: 0 0 10px #08992c, 0 0 20px #00ffcc;
+  transition: width 0.3s ease;
+}
+
+.loader-fill{
+    font-size: large;
+    color:#08992c;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 2.25rem;
+  bottom: 2.25rem;
+  max-width: 700px;  
+  border: 1px solid #ccc;
+  opacity: 0.5;
+}
+
+.footer-container div {
+    border: 1px solid #ccc;
+}
+
+.logo--sprite {
+max-width: 70px;
+}
+
+.logo--marvel {
+max-width: 70px;
+}
+
+.footer__text {
+color: var(--main-text-color);
+max-width: 400px;
+padding: 13px;
+}
