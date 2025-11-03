@@ -1,11 +1,10 @@
+import * as THREE from 'https://unpkg.com/three@0.159.0/build/three.module.js';
 
 let progress = 0;
 const loaderBar = document.querySelector('.loader-bar');
 const loaderScreen = document.getElementById('loaderScreen');
 const loaderFill = document.getElementById('loaderFill');
 const mainScreen = document.getElementById('mainScreen');
-
-
 
 
 const interval = setInterval(() => {
@@ -56,5 +55,58 @@ btns.forEach(btn => {
 });
 
 
+const container = document.getElementById('star-bg');
 
+// === Сцена ===
+const scene = new THREE.Scene();
 
+// === Камера ===
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.z = 5;
+
+// === Рендерер ===
+const renderer = new THREE.WebGLRenderer({ alpha: true }); // 🔹 прозорий фон
+renderer.setSize(window.innerWidth, window.innerHeight);
+container.appendChild(renderer.domElement);
+
+// === Зірки ===
+const starGeometry = new THREE.BufferGeometry();
+const starCount = 1500;
+const positions = new Float32Array(starCount * 3);
+
+for (let i = 0; i < starCount * 3; i++) {
+  positions[i] = (Math.random() - 0.5) * 100;
+}
+
+starGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+const starMaterial = new THREE.PointsMaterial({
+  color: 0xffffff,
+  size: 0.1,
+  transparent: true,
+  opacity: 0.8,
+});
+
+const stars = new THREE.Points(starGeometry, starMaterial);
+scene.add(stars);
+
+// === Анімація ===
+function animate() {
+  requestAnimationFrame(animate);
+  stars.rotation.y += 0.0008;
+  renderer.render(scene, camera);
+}
+
+animate();
+
+// === Адаптація під зміну розміру ===
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
